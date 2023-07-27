@@ -1,0 +1,49 @@
+﻿<br />
+<br /> 
+<body>
+    <style type="text/css">
+        #YearId,#MonthId {
+            background-color: navajowhite;
+            color: cadetblue;
+            width:180px;
+            text-shadow:inherit;
+        }
+
+        table,tr:hover{
+            color:orange;
+        }
+    </style>
+ 
+<div id="container">
+
+<h2 style="color:aqua;  text-align: center"> Select The Year</h2>
+<div style="color: red; text-align: center">
+    <br />
+
+    @Html.DropDownList("Year",null,
+    new { @id = "YearId"})
+    <br />
+    <br />
+    <h2 style="color:aqua;  text-align: center"> Select The Month</h2>
+    <br />
+    @Html.DropDownList("Months",null,
+    new {@id="MonthId"})
+    <br />
+
+    @section Scripts
+        {
+        <script language="javascript" type="text/javascript">
+            $(document).ready(function () {
+
+                $("#MonthId").change(function () {
+
+                    var MonthId = $('#MonthId').val();
+                    var YearId = $('#YearId').val();
+                    window.location.href = '@Url.Action("Index2","Home")' + '?value1=' + MonthId + '&value2=' + YearId
+                });
+            });
+        </script>
+    }
+    </div>
+</div>
+</body>

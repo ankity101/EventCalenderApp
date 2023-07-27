@@ -1,0 +1,784 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		table {
+			border-collapse: collapse;
+			background: white;
+			color: black;
+		}
+		th,
+		td {
+			font-weight: bold;
+		}
+		table{
+			background-color: darkgray;
+		}
+		table, tr:hover {
+			font-size:large;
+		}
+		td:hover {
+			background-color: lightslategray;
+			transform: scale(1.1);
+			 
+		}
+
+		.next {
+			top: 17%;
+			left: 65%;
+			position: absolute;
+		}
+
+		.prev {
+			top: 17%;
+			left: 32%;
+			position: absolute;
+		}
+ 
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+</head>
+@functions{
+	public bool leepYear(int year)
+	{
+		bool cheak = false;
+		if (year % 400 == 0)
+			cheak = true;
+		else if (year % 100 == 0)
+			cheak = false;
+		else if (year % 4 == 0)
+			cheak = true;
+		else
+			cheak = false;
+		return cheak;
+	}
+}
+<body style="color:darkgreen">
+	<div class="month"  >
+ 
+	@{
+		var select_year = ViewBag.Year;
+	}
+	@{
+			<i class="fa fa-angle-left prev" onclick="leftBtn()"></i>
+		DateTime date = new DateTime(@select_year, @ViewBag.Month, 1);
+		string month_name = date.ToString("MMMM");
+		<div class="text-center">
+			<h1 class="display-4"  >Welcome</h1>
+		</div>
+		<h2 align="center" style="color: orange;">
+			@month_name @select_year
+		</h2>
+			<i class="fa fa-angle-right next" onclick="rightBtn()"></i>
+	}
+	</div>
+	 
+	@{
+		var month = ViewBag.Month;
+		DateTime dateValue = new DateTime(@select_year, month, 1);
+		// Console.WriteLine((int)dateValue.DayOfWeek);
+		int weekday = (int)dateValue.DayOfWeek;
+		// <p1>@weekday</p1>
+		if (weekday == 0)
+		{
+			<table bgcolor="lightgrey" align="center"
+		   	cellspacing="30" cellpadding="30" >
+			    
+				<thead>
+					<tr>
+ -
+						<th style="color: white; background: purple;">
+							Sun
+
+						</th>
+						<th style="color: white; background: purple;">
+							Mon
+						</th>
+						<th style="color: white; background: purple;">
+							Tue
+						</th>
+						<th style="color: white; background: purple;">
+							Wed
+						</th>
+						<th style="color: white; background: purple;">
+							Thu
+						</th>
+						<th style="color: white; background: purple;">
+							Fri
+						</th>
+						<th style="color: white; background: purple;">
+							Sat
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+					</tr>
+					<tr></tr>
+					<tr>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+					</tr>
+					<tr>
+
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+					</tr>
+					<tr>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+					</tr>
+					<tr>
+						<td>29</td>
+						<td>30</td>
+						@if (month == 6 || month == 9 || month == 4 || month == 11)
+						{
+
+						}
+						else
+						{
+							<td>31</td>
+						}
+					</tr>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+		}
+		else if (weekday == 1)
+		{
+			<table bgcolor="lightgrey" align="center"
+		   	cellspacing="21" cellpadding="21">
+
+				<thead>
+					<tr>
+
+						<th style="color: white; background: purple;">
+							Mon
+						</th>
+						<th style="color: white; background: purple;">
+							Tue
+						</th>
+						<th style="color: white; background: purple;">
+							Wed
+						</th>
+						<th style="color: white; background: purple;">
+							Thu
+						</th>
+						<th style="color: white; background: purple;">
+							Fri
+						</th>
+						<th style="color: white; background: violet;">
+							Sat
+						</th>
+
+						<th style="color: white; background: violet;">
+							Sun
+
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+					</tr>
+					<tr></tr>
+					<tr>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+					</tr>
+					<tr>
+
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+					</tr>
+					<tr>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+					</tr>
+					<tr>
+						<td>29</td>
+						<td>30</td>
+						@if (month == 6 || month == 9 || month == 4 || month == 11)
+						{
+
+						}
+						else
+						{
+							<td>31</td>
+						}
+
+
+					</tr>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+		}
+		else if (weekday == 2)
+		{
+
+			<table bgcolor="lightgrey" align="center"
+		   	cellspacing="21" cellpadding="21">
+
+
+
+
+				<thead>
+					<tr>
+
+
+						<th style="color: white; background: purple;">
+							Mon
+						</th>
+						<th style="color: white; background: purple;">
+							Tue
+						</th>
+						<th style="color: white; background: purple;">
+							Wed
+						</th>
+						<th style="color: white; background: purple;">
+							Thu
+						</th>
+						<th style="color: white; background: purple;">
+							Fri
+						</th>
+						<th style="color: red; background: purple;">
+							Sat
+						</th>
+						<th style="color: red; background: purple;">
+							Sun
+
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+
+						<td></td>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+					</tr>
+					<tr></tr>
+					<tr>
+
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+					</tr>
+					<tr>
+
+						<td>14</td>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+					</tr>
+					<tr>
+
+						<td>21</td>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+					</tr>
+					<tr>
+
+						<td>28</td>
+						<td>29</td>
+						<td>30</td>
+						@if (month == 6 || month == 9 || month == 4 || month == 11)
+						{
+
+						}
+						else
+						{
+							<td>31</td>
+						}
+
+					</tr>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+
+		}
+		else if (weekday == 3)
+		{
+
+			<table bgcolor="lightgrey" align="center"
+		   	cellspacing="21" cellpadding="21">
+
+
+
+
+				<thead>
+					<tr>
+
+						<th style="color: white; background: purple;">
+							Sun
+
+						</th>
+						<th style="color: white; background: purple;">
+							Mon
+						</th>
+						<th style="color: white; background: purple;">
+							Tue
+						</th>
+						<th style="color: white; background: purple;">
+							Wed
+						</th>
+						<th style="color: white; background: purple;">
+							Thu
+						</th>
+						<th style="color: white; background: purple;">
+							Fri
+						</th>
+						<th style="color: white; background: purple;">
+							Sat
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+					</tr>
+					<tr></tr>
+					<tr>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+
+					</tr>
+					<tr>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+						<td>25</td>
+
+					</tr>
+					<tr>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+						<td>29</td>
+						<td>30</td>
+						@if (month == 6 || month == 9 || month == 4 || month == 11)
+						{
+
+						}
+						else
+						{
+							<td>31</td>
+						}
+					</tr>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+
+		}
+		else if (weekday == 4)
+		{
+
+			<table bgcolor="lightgrey" align="center"
+		   	cellspacing="21" cellpadding="21">
+
+
+				<thead>
+					<tr>
+
+						<th style="color: white; background: purple;">
+							Sun
+
+						</th>
+						<th style="color: white; background: purple;">
+							Mon
+						</th>
+						<th style="color: white; background: purple;">
+							Tue
+						</th>
+						<th style="color: white; background: purple;">
+							Wed
+						</th>
+						<th style="color: white; background: purple;">
+							Thu
+						</th>
+						<th style="color: white; background: purple;">
+							Fri
+						</th>
+						<th style="color: white; background: purple;">
+							Sat
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+					</tr>
+					<tr></tr>
+					<tr>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+
+					</tr>
+					<tr>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+
+					</tr>
+					<tr>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+						<td>29</td>
+						<td>30</td>
+						@if (month == 6 || month == 9 || month == 4 || month == 11)
+						{
+
+						}
+						else
+						{
+							<td>31</td>
+						}
+
+					</tr>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+
+		}
+		else if (weekday == 5)
+		{
+
+			<table bgcolor="lightgrey" align="center"
+		   	cellspacing="21" cellpadding="21">
+
+
+
+
+				<thead>
+					<tr>
+
+
+						<th style="color: white; background: purple;">
+							Mon
+						</th>
+						<th style="color: white; background: purple;">
+							Tue
+						</th>
+						<th style="color: white; background: purple;">
+							Wed
+						</th>
+						<th style="color: white; background: purple;">
+							Thu
+						</th>
+						<th style="color: white; background: purple;">
+							Fri
+						</th>
+						<th style="color: red; background: purple;">
+							Sat
+						</th>
+						<th style="color: red; background: purple;">
+							Sun
+
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+
+					</tr>
+					<tr></tr>
+					<tr>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+
+
+					</tr>
+					<tr>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+
+
+					</tr>
+					<tr>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+						<td>29</td>
+						<td>30</td>
+						@if (month == 6 || month == 9 || month == 4 || month == 11)
+						{
+
+						}
+						else
+						{
+							<td>31</td>
+						}
+
+					</tr>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+
+
+		}
+		else if (weekday == 6)
+		{
+
+			<table bgcolor="lightgrey" align="center"
+		   	cellspacing="21" cellpadding="21">
+
+
+
+
+				<thead>
+					<tr>
+
+						<th style="color: white; background: purple;">
+							Sun
+
+						</th>
+						<th style="color: white; background: purple;">
+							Mon
+						</th>
+						<th style="color: white; background: purple;">
+							Tue
+						</th>
+						<th style="color: white; background: purple;">
+							Wed
+						</th>
+						<th style="color: white; background: purple;">
+							Thu
+						</th>
+						<th style="color: white; background: purple;">
+							Fri
+						</th>
+						<th style="color: white; background: purple;">
+							Sat
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>1</td>
+					</tr>
+					<tr></tr>
+					<tr>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+
+
+
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+						<td>15</td>
+
+
+
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+						<td>22</td>
+					</tr>
+					<tr>
+						<td>23</td>
+						<td>24</td>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+						<td>29</td>
+					</tr>
+					<tr>
+						<td>30</td>
+						@if (month == 6 || month == 9 || month == 4 || month == 11)
+						{
+
+						}
+						else
+						{
+							<td>31</td>
+						}
+					</tr>
+				</tbody>
+			</table>
+		}
+		else
+		{
+			<h1>error on weekdays</h1>
+		}
+	}
+
+</body>
+
+</html>
